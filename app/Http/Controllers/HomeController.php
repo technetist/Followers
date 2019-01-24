@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,13 +17,11 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
+    public function toggleFollow(Request $request)
     {
-        return view('home');
+        $user = User::find($request->user_id);
+        $response = auth()->user()->toggleFollow($user);
+
+        return response()->json(['success' => $response]);
     }
 }

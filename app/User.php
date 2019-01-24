@@ -10,8 +10,7 @@ use Overtrue\LaravelFollow\Traits\CanFollow;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-    use CanFollow, CanBeFollowed;
+    use Notifiable, CanFollow, CanBeFollowed;
 
     /**
      * The attributes that are mass assignable.

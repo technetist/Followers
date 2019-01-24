@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'UserController@index')->name('home');
+Route::get('/user/{id}', 'UserController@show')->name('user');
+Route::post('/follow', 'HomeController@toggleFollow')->name('follow');
